@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Application\Usecases;
+namespace Core\Application\Usecases\Product;
 
 use Core\Domain\Repositories\IProductRepository;
 
