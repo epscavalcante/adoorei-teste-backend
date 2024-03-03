@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Core\Domain\Exceptions\EntityNotFoundException;
 use Core\Domain\Exceptions\EntityValidationException;
+use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
 use Core\Domain\Exceptions\UuidInvalidException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
@@ -46,7 +47,10 @@ class Handler extends ExceptionHandler
             ], Response::HTTP_NOT_FOUND);
         }
 
-        if ($e instanceof UuidInvalidException) {
+        if (
+            $e instanceof UuidInvalidException ||
+            $e instanceof SaleAlreadBeCancelledException
+        ) {
             return response()->json([
                 'message' => $e->getMessage(),
             ], Response::HTTP_BAD_REQUEST);
