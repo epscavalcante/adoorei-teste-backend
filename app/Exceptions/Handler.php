@@ -7,8 +7,9 @@ use Core\Domain\Exceptions\EntityValidationException;
 use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
 use Core\Domain\Exceptions\UuidInvalidException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
 use Illuminate\Http\Response;
+use Throwable;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -37,7 +38,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof EntityValidationException) {
             return response()->json([
                 'message' => $e->getMessage(),
-                'errors' => $e->getErrors()
+                'errors' => $e->getErrors(),
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 

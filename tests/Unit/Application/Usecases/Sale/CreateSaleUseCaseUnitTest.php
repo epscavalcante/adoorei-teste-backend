@@ -2,15 +2,15 @@
 
 use Core\Application\Usecases\Sale\CreateSaleUsecase;
 use Core\Application\Usecases\Sale\CreateSaleUsecaseInput;
-use Core\Application\Validations\ProductIdsExistsValidation;
-use Core\Infra\Repositories\ProductMemoryRepository;
-use Core\Domain\Entities\Sale;
-use Core\Domain\Entities\Product;
-use Core\Infra\Repositories\SaleMemoryRepository;
-use Core\Domain\Exceptions\EntityValidationException;
-use Core\Domain\ValueObjects\Uuid;
 use Core\Application\Usecases\Sale\SaleProductUsecaseOutput;
 use Core\Application\Usecases\Sale\SaleUsecaseOutput;
+use Core\Application\Validations\ProductIdsExistsValidation;
+use Core\Domain\Entities\Product;
+use Core\Domain\Entities\Sale;
+use Core\Domain\Exceptions\EntityValidationException;
+use Core\Domain\ValueObjects\Uuid;
+use Core\Infra\Repositories\ProductMemoryRepository;
+use Core\Infra\Repositories\SaleMemoryRepository;
 
 describe('CreateSaleUsecase Unit Test', function () {
 
@@ -49,14 +49,13 @@ describe('CreateSaleUsecase Unit Test', function () {
                     'productId' => Uuid::create()->getValue(),
                     'name' => 'Product 1',
                     'price' => 1500,
-                    'amount' => 2
-                ]
+                    'amount' => 2,
+                ],
             ]
         );
 
         $usecase->execute($input);
     })->throws(EntityValidationException::class);
-
 
     test('Should creates an sale', function () {
         $product = Product::create(
@@ -82,8 +81,8 @@ describe('CreateSaleUsecase Unit Test', function () {
                     'productId' => $product->getId()->getValue(),
                     'name' => $product->name,
                     'price' => $product->getPrice(),
-                    'amount' => 2
-                ]
+                    'amount' => 2,
+                ],
             ]
         );
 

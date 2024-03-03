@@ -46,7 +46,7 @@ class StoreSaleRequest extends FormRequest
             'products' => 'required|array|min:1',
             'products.*.productId' => 'required|uuid',
             'products.*.price' => 'required|int|min:0',
-            'products.*.amount' => 'required|int|min:1'
+            'products.*.amount' => 'required|int|min:1',
         ];
     }
 }

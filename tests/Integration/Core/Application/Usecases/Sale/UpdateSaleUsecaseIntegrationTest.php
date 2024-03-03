@@ -4,18 +4,18 @@ use App\Models\Product as ModelsProduct;
 use App\Models\Sale as ModelsSale;
 use App\Repositories\Eloquent\ProductEloquentRepository;
 use App\Repositories\Eloquent\SaleEloquentRepository;
-use Core\Application\Validations\ProductIdsExistsValidation;
-use Core\Domain\Entities\Product;
-use Core\Application\Usecases\Sale\UpdateSaleUsecase;
-use Core\Application\Usecases\Sale\UpdateSaleUsecaseInput;
-use Core\Domain\Entities\Sale;
-use Core\Domain\Entities\SaleProduct;
-use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
-use Core\Domain\Exceptions\SaleNotFoundException;
-use Core\Domain\Exceptions\EntityValidationException;
-use Core\Domain\ValueObjects\Uuid;
 use Core\Application\Usecases\Sale\SaleProductUsecaseOutput;
 use Core\Application\Usecases\Sale\SaleUsecaseOutput;
+use Core\Application\Usecases\Sale\UpdateSaleUsecase;
+use Core\Application\Usecases\Sale\UpdateSaleUsecaseInput;
+use Core\Application\Validations\ProductIdsExistsValidation;
+use Core\Domain\Entities\Product;
+use Core\Domain\Entities\Sale;
+use Core\Domain\Entities\SaleProduct;
+use Core\Domain\Exceptions\EntityValidationException;
+use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
+use Core\Domain\Exceptions\SaleNotFoundException;
+use Core\Domain\ValueObjects\Uuid;
 
 describe('UpdateSaleUsecase Integration Test', function () {
     test('Should throws SaleNotFoundException', function () {
@@ -73,14 +73,13 @@ describe('UpdateSaleUsecase Integration Test', function () {
                     'productId' => Uuid::create()->getValue(),
                     'name' => 'Product 1',
                     'price' => 1500,
-                    'amount' => 2
-                ]
+                    'amount' => 2,
+                ],
             ]
         );
 
         $usecase->execute($input);
     })->throws(EntityValidationException::class);
-
 
     test('Should update sale add product', function () {
         $product = Product::create(
@@ -108,8 +107,8 @@ describe('UpdateSaleUsecase Integration Test', function () {
                     'productId' => $product->getId()->getValue(),
                     'name' => $product->name,
                     'price' => $product->getPrice(),
-                    'amount' => 2
-                ]
+                    'amount' => 2,
+                ],
             ]
         );
 
@@ -175,8 +174,8 @@ describe('UpdateSaleUsecase Integration Test', function () {
                     'productId' => $product1->getId()->getValue(),
                     'name' => $product1->name,
                     'price' => 1500,
-                    'amount' => 3
-                ]
+                    'amount' => 3,
+                ],
             ]
         );
 

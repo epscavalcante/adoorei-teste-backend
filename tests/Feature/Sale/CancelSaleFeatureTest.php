@@ -29,14 +29,14 @@ describe('PATCH /sales/id/cancel', function () {
             'product_id' => $product->id,
             'amount' => 3,
             'price' => 100,
-            'total' => 300
+            'total' => 300,
         ]);
         $this->patchJson(route('sales.cancel', $sale->id))
             ->assertNoContent();
 
         $this->assertDatabaseHas('sales', [
             'id' => $sale->id,
-            'status' => 'cancelled'
+            'status' => 'cancelled',
         ]);
     });
 });

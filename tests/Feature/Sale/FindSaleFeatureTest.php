@@ -23,7 +23,7 @@ describe('GET /sales/id', function () {
             'product_id' => $product->id,
             'amount' => 3,
             'price' => 100,
-            'total' => 300
+            'total' => 300,
         ]);
         $this->getJson(route('sales.show', $sale->id))
             ->assertStatus(200)
@@ -38,9 +38,9 @@ describe('GET /sales/id', function () {
                             'id' => $product->id,
                             'name' => 'test',
                             'price' => 100,
-                            'amount' => 3
-                        ]
-                    ]
+                            'amount' => 3,
+                        ],
+                    ],
                 ],
             ]);
     });

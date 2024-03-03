@@ -38,7 +38,7 @@ class ProductController extends Controller
         $output = $usecase->execute();
 
         return ProductResource::collection($output->items)->additional([
-            'total' => $output->total
+            'total' => $output->total,
         ]);
     }
 }

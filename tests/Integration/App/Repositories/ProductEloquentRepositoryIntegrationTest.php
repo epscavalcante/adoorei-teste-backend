@@ -63,7 +63,7 @@ describe('ProductEloquentRepository Integration tests', function () {
                 productIds: [
                     $firstProduct->getId(),
                     $secondProduct->getId(),
-                    $thirdProduct->getId()
+                    $thirdProduct->getId(),
                 ]
             );
 
@@ -96,7 +96,7 @@ describe('ProductEloquentRepository Integration tests', function () {
                     Uuid::create(),
                     $firstProduct->getId(),
                     $secondProduct->getId(),
-                    $thirdProduct->getId()
+                    $thirdProduct->getId(),
                 ]
             );
 
@@ -138,10 +138,9 @@ describe('ProductEloquentRepository Integration tests', function () {
                 productIds: [
                     // $firstProduct->getId(),
                     $secondProduct->getId(),
-                    $thirdProduct->getId()
+                    $thirdProduct->getId(),
                 ]
             );
-
 
             expect($result)->toHaveCount(2);
             expect($result[0]->getId())->toBeInstanceOf(Uuid::class);

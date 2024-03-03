@@ -1,17 +1,17 @@
 <?php
 
-use App\Models\Sale as SaleModel;
 use App\Models\Product as ProductModel;
+use App\Models\Sale as SaleModel;
 use App\Repositories\Eloquent\ProductEloquentRepository;
 use App\Repositories\Eloquent\SaleEloquentRepository;
 use Core\Application\Usecases\Sale\CancelSaleUsecase;
 use Core\Application\Usecases\Sale\CancelSaleUsecaseInput;
+use Core\Application\Usecases\Sale\SaleUsecaseOutput;
 use Core\Domain\Entities\Sale;
 use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
 use Core\Domain\Exceptions\SaleNotFoundException;
 use Core\Domain\SaleStatusEnum;
 use Core\Domain\ValueObjects\Uuid;
-use Core\Application\Usecases\Sale\SaleUsecaseOutput;
 
 describe('CancelSaleUsecaseIntegrationTest', function () {
     test('Should throws SaleNotFoundException', function () {

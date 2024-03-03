@@ -10,7 +10,7 @@ use Core\Domain\ValueObjects\Uuid;
 class SaleMemoryRepository implements ISaleRepository
 {
     /**
-     * @var Array<Sale> $items
+     * @var array<Sale>
      */
     private array $items = [];
 
@@ -29,8 +29,9 @@ class SaleMemoryRepository implements ISaleRepository
         $saleFound = null;
 
         foreach ($this->items as $sale) {
-            if ($sale->getId()->equals($saleId))
+            if ($sale->getId()->equals($saleId)) {
                 $saleFound = $sale;
+            }
         }
 
         return $saleFound ?? throw new SaleNotFoundException($saleId);
@@ -42,6 +43,7 @@ class SaleMemoryRepository implements ISaleRepository
             if ($sale->getId()->equals($sale->getId())) {
                 unset($this->items[$key]);
                 $this->items[$key] = $sale;
+
                 return;
             }
         }

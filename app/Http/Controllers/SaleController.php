@@ -52,7 +52,7 @@ class SaleController extends Controller
         $output = $usecase->execute();
 
         return SaleResource::collection($output->items)->additional([
-            'total' => $output->total
+            'total' => $output->total,
         ]);
     }
 

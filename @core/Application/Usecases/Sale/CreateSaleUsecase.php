@@ -5,10 +5,9 @@ namespace Core\Application\Usecases\Sale;
 use Core\Application\Validations\IProductIdsExistsValidation;
 use Core\Domain\Entities\Sale;
 use Core\Domain\Entities\SaleProduct;
-use Core\Domain\Repositories\ISaleRepository;
 use Core\Domain\Exceptions\EntityValidationException;
 use Core\Domain\Repositories\IProductRepository;
-use Core\Application\Usecases\Sale\SaleUsecaseOutput;
+use Core\Domain\Repositories\ISaleRepository;
 
 class CreateSaleUsecase
 {

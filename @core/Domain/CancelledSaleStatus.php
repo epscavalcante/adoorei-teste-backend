@@ -13,6 +13,7 @@ class CancelledSaleStatus extends SaleStatus
         parent::__construct($sale);
         $this->value = SaleStatusEnum::CANCELLED;
     }
+
     public function open()
     {
         throw new SaleCantBeOpenedException($this->sale->getId());

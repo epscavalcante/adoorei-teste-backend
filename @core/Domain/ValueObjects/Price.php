@@ -19,7 +19,8 @@ class Price extends ValueObject
 
     public function validate()
     {
-        if ($this->valueInCents < 0)
+        if ($this->valueInCents < 0) {
             throw new PriceNegativeValueException($this->valueInCents);
+        }
     }
 }

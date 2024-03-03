@@ -7,7 +7,7 @@ use Core\Domain\Entities\Product;
 class ListProductUsecaseOutput
 {
     /**
-     * @param array<ProductUsecaseOutput> $items
+     * @param  array<ProductUsecaseOutput>  $items
      */
     private function __construct(
         public readonly array $items,
