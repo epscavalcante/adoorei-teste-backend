@@ -18,8 +18,9 @@ class CancelSaleUsecase
     {
         $sale = $this->saleRepository->find(new Uuid($input->saleId));
 
-        if ($sale->isCancelled())
+        if ($sale->isCancelled()) {
             throw new SaleAlreadBeCancelledException($sale->getId());
+        }
 
         $sale->markAsCancelled();
 

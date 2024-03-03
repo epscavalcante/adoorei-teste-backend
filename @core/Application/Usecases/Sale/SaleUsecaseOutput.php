@@ -16,14 +16,14 @@ class SaleUsecaseOutput
     }
 
     /**
-     * @param Array<Product> $productsRelated
+     * @param  array<Product>  $productsRelated
      */
     public static function create(Sale $sale, array $productsRelated): self
     {
         $productsOutput = [];
         foreach ($productsRelated as $productRelated) {
             foreach ($sale->getProducts() as $saleProduct) {
-                if ($productRelated->getId()->getValue() === $saleProduct->productId->getValue())
+                if ($productRelated->getId()->getValue() === $saleProduct->productId->getValue()) {
                     array_push(
                         $productsOutput,
                         new SaleProductUsecaseOutput(
@@ -34,8 +34,9 @@ class SaleUsecaseOutput
                             total: $saleProduct->getTotal()->getValue()
                         )
                     );
+                }
             }
-        };
+        }
 
         return new self(
             saleId: $sale->getId()->getValue(),
@@ -44,5 +45,4 @@ class SaleUsecaseOutput
             products: $productsOutput
         );
     }
-
 }

@@ -1,13 +1,12 @@
 <?php
 
 use Core\Domain\Entities\Product;
-use Core\Domain\Entities\SaleProduct;
 use Core\Domain\Entities\Sale;
+use Core\Domain\Entities\SaleProduct;
 use Core\Domain\Exceptions\SaleCantBeCancelledException;
 use Core\Domain\SaleStatusEnum;
 use Core\Domain\ValueObjects\Price;
 use Core\Domain\ValueObjects\Uuid;
-
 
 describe('Sale Unit Test', function () {
     test('Deve criar um venda com id e lista de produtos vazia', function () {
@@ -68,7 +67,6 @@ describe('Sale Unit Test', function () {
             expect($sale->getStatus()->value)->toBe(SaleStatusEnum::OPENED->value);
         });
     });
-
 
     test('Deve criar um venda com lista de produtos', function () {
         $sale1 = Sale::create();
@@ -143,7 +141,6 @@ describe('Sale Unit Test', function () {
         expect($sale->getProducts()[0]->getAmount())->toBe(4);
         expect($sale->getTotal())->toBe(4000);
     });
-
 
     describe('syncProducts method', function () {
 

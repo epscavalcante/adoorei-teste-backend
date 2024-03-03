@@ -8,7 +8,7 @@ use Core\Domain\Repositories\IProductRepository;
 class ProductMemoryRepository implements IProductRepository
 {
     /**
-     * @var Array<Product> $items
+     * @var array<Product>
      */
     private array $items = [];
 
@@ -25,14 +25,14 @@ class ProductMemoryRepository implements IProductRepository
     }
 
     /**
-     * @param Array<ProductId>
+     * @param array<ProductId>
      */
     public function existsByIds(array $productIds): array
     {
         if (count($productIds) === 0) {
             return [
                 'exists' => [],
-                'notExists' => []
+                'notExists' => [],
             ];
         }
 
@@ -42,12 +42,16 @@ class ProductMemoryRepository implements IProductRepository
         foreach ($productIds as $productId) {
             $found = null;
             foreach ($this->items as $item) {
-                if ($item->getId()->equals($productId))
+                if ($item->getId()->equals($productId)) {
                     $found = $item;
+                }
             }
 
-            if ($found) array_push($exists, $found);
-            else array_push($notExists, $productId);
+            if ($found) {
+                array_push($exists, $found);
+            } else {
+                array_push($notExists, $productId);
+            }
         }
 
         return [
@@ -57,18 +61,21 @@ class ProductMemoryRepository implements IProductRepository
     }
 
     /**
-     * @param Array<Uuid> $productIds
+     * @param  array<Uuid>  $productIds
      */
     public function findByIds(array $productIds): array
     {
-        if(count($productIds) === 0) return [];
+        if (count($productIds) === 0) {
+            return [];
+        }
 
         $productsFound = [];
 
         foreach ($this->items as $product) {
-            foreach($productIds as $productId) {
-                if ($product->getId()->equals($productId))
+            foreach ($productIds as $productId) {
+                if ($product->getId()->equals($productId)) {
                     array_push($productsFound, $product);
+                }
             }
         }
 

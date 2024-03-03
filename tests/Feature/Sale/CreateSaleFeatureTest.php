@@ -15,9 +15,9 @@ describe('POST /sales', function () {
                 [
                     'productId' => Uuid::create()->getValue(),
                     'price' => 21,
-                    'amount' => 1312
-                ]
-            ]
+                    'amount' => 1312,
+                ],
+            ],
         ];
 
         $this->postJson(route('sales.store'), $body)
@@ -31,9 +31,9 @@ describe('POST /sales', function () {
                 [
                     'productId' => $product->id,
                     'price' => $product->price,
-                    'amount' => 10
-                ]
-            ]
+                    'amount' => 10,
+                ],
+            ],
         ];
 
         $this->postJson(route('sales.store'), $body)
@@ -47,9 +47,9 @@ describe('POST /sales', function () {
                         'id',
                         'name',
                         'price',
-                        'amount'
-                    ]
-                ]
+                        'amount',
+                    ],
+                ],
             ]);
     });
 });

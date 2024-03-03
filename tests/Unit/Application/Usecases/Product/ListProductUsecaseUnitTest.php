@@ -1,13 +1,12 @@
 <?php
 
-use Core\Infra\Repositories\ProductMemoryRepository;
 use Core\Application\Usecases\Product\ListProductUsecase;
 use Core\Application\Usecases\Product\ListProductUsecaseOutput;
 use Core\Application\Usecases\Product\ProductUsecaseOutput;
 use Core\Domain\Entities\Product;
+use Core\Infra\Repositories\ProductMemoryRepository;
 
 describe('ListProductUsecaseUnitTest', function () {
-
 
     test('Deve retornar uma lista de produtos vazia', function () {
         $repository = new ProductMemoryRepository();

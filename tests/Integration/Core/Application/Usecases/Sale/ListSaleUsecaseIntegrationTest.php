@@ -1,16 +1,16 @@
 <?php
 
-use App\Models\Sale as SaleModel;
 use App\Models\Product as ProductModel;
+use App\Models\Sale as SaleModel;
 use App\Repositories\Eloquent\ProductEloquentRepository;
 use App\Repositories\Eloquent\SaleEloquentRepository;
-use Core\Domain\Entities\Product;
-use Core\Domain\Entities\SaleProduct;
 use Core\Application\Usecases\Sale\ListSaleUsecase;
 use Core\Application\Usecases\Sale\ListSaleUsecaseOutput;
-use Core\Application\Usecases\Sale\SaleUsecaseOutput;
-use Core\Domain\Entities\Sale;
 use Core\Application\Usecases\Sale\SaleProductUsecaseOutput;
+use Core\Application\Usecases\Sale\SaleUsecaseOutput;
+use Core\Domain\Entities\Product;
+use Core\Domain\Entities\Sale;
+use Core\Domain\Entities\SaleProduct;
 
 describe('ListSaleUsecaseIngrationTest', function () {
 

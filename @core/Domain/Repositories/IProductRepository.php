@@ -14,11 +14,12 @@ interface IProductRepository
     public function insert(Product $produt): Product;
 
     /**
-     * @param Array<Uuid> $productIds
+     * @param  array<Uuid>  $productIds
      */
     public function existsByIds(array $productIds): array;
+
     /**
-     * @param Array<Uuid> $productIds
+     * @param  array<Uuid>  $productIds
      */
     public function findByIds(array $productIds): array;
 }

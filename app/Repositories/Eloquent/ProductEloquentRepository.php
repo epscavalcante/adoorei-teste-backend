@@ -31,26 +31,27 @@ class ProductEloquentRepository implements IProductRepository
     public function list(string $filter = '', $order = 'DESC'): array
     {
         $productsModel = $this->model->all();
+
         return $productsModel
             ->map(fn ($model) => $this->mapModelToEntity($model))
             ->toArray();
     }
 
     /**
-     * @param Array<Uuid> $productIds
+     * @param  array<Uuid>  $productIds
      */
     public function existsByIds(array $productIds): array
     {
-        if (count($productIds) === 0)
+        if (count($productIds) === 0) {
             return [
                 'exists' => [],
                 'notExists' => [],
             ];
+        }
 
         $exists = [];
         $notExists = [];
         $result = $this->model->whereIn('id', array_map(fn (Uuid $id) => $id->getValue(), $productIds))->get()->modelKeys();
-
 
         foreach ($productIds as $productId) {
             $exist = null;
@@ -61,24 +62,30 @@ class ProductEloquentRepository implements IProductRepository
                 }
             }
 
-            if ($exist) array_push($exists, $exist);
-            else array_push($notExists, $productId);
+            if ($exist) {
+                array_push($exists, $exist);
+            } else {
+                array_push($notExists, $productId);
+            }
         }
 
         return [
             'exists' => $exists,
-            'notExists' => $notExists
+            'notExists' => $notExists,
         ];
     }
 
     /**
-     * @param Array<Uuid> $productIds
+     * @param  array<Uuid>  $productIds
      */
     public function findByIds(array $productIds): array
     {
-        if (count($productIds) === 0) return [];
+        if (count($productIds) === 0) {
+            return [];
+        }
         $result = $this->model->whereIn('id', array_map(fn (Uuid $id) => $id->getValue(), $productIds))->get();
-        return array_map(fn(ProductModel $model) => $this->mapModelToEntity($model), $result->all());
+
+        return array_map(fn (ProductModel $model) => $this->mapModelToEntity($model), $result->all());
     }
 
     private function mapModelToEntity(ProductModel $model): Product

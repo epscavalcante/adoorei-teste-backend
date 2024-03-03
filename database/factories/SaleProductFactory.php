@@ -28,7 +28,7 @@ class SaleProductFactory extends Factory
             'product_id' => $product->id,
             'price' => $product->price,
             'amount' => $amount,
-            'total' => $total
+            'total' => $total,
         ];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
 use Core\Domain\Entities\Product;
-use Core\Infra\Repositories\ProductMemoryRepository;
 use Core\Domain\ValueObjects\Uuid;
+use Core\Infra\Repositories\ProductMemoryRepository;
 
 describe('ProductMemoryRepositoryUnitTest', function () {
 
@@ -39,9 +39,9 @@ describe('ProductMemoryRepositoryUnitTest', function () {
                         name: 'Product test',
                         description: 'desc',
                         price: 150
-                    )
+                    ),
                 ],
-                1
+                1,
             ],
             'with some items' => [
                 [
@@ -61,8 +61,8 @@ describe('ProductMemoryRepositoryUnitTest', function () {
                         price: 150
                     ),
                 ],
-                4
-            ]
+                4,
+            ],
         ]);
     });
 
@@ -100,7 +100,7 @@ describe('ProductMemoryRepositoryUnitTest', function () {
                 productIds: [
                     $firstProduct->getId(),
                     $secondProduct->getId(),
-                    $thirdProduct->getId()
+                    $thirdProduct->getId(),
                 ]
             );
 
@@ -133,7 +133,7 @@ describe('ProductMemoryRepositoryUnitTest', function () {
                     Uuid::create(),
                     $firstProduct->getId(),
                     $secondProduct->getId(),
-                    $thirdProduct->getId()
+                    $thirdProduct->getId(),
                 ]
             );
 
@@ -175,7 +175,7 @@ describe('ProductMemoryRepositoryUnitTest', function () {
                 productIds: [
                     // $firstProduct->getId(),
                     $secondProduct->getId(),
-                    $thirdProduct->getId()
+                    $thirdProduct->getId(),
                 ]
             );
 

@@ -36,11 +36,13 @@ class ListSaleUsecase
     }
 
     /**
-     * @param Array<Sale> $sales
+     * @param  array<Sale>  $sales
      */
-    private function  getProductsFromSales(array $sales)
+    private function getProductsFromSales(array $sales)
     {
-        if (count($sales) === 0) return [];
+        if (count($sales) === 0) {
+            return [];
+        }
 
         $products = [];
 

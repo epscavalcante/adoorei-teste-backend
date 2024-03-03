@@ -22,8 +22,9 @@ class Model extends EloquentModel
     protected static function booted()
     {
         static::creating(function ($model) {
-            if (!$model->id)
+            if (! $model->id) {
                 $model->id = UuidV4::v4()->__toString();
+            }
         });
     }
 }

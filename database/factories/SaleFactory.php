@@ -19,7 +19,7 @@ class SaleFactory extends Factory
     {
         return [
             'status' => $this->faker->boolean() ? SaleStatusEnum::CANCELLED->value : SaleStatusEnum::OPENED->value,
-            'total' =>  $this->faker->numberBetween(20, 3000)
+            'total' => $this->faker->numberBetween(20, 3000),
         ];
     }
 }

@@ -5,7 +5,6 @@ namespace Core\Domain\Entities;
 use Core\Domain\SaleStatus;
 use Core\Domain\SaleStatusEnum;
 use Core\Domain\SaleStatusFactory;
-use Core\Domain\Entities\Entity;
 use Core\Domain\ValueObjects\Uuid;
 
 class Sale extends Entity
@@ -13,7 +12,7 @@ class Sale extends Entity
     public SaleStatus $status;
 
     /**
-     * @param Array<SaleProduct> $products
+     * @param  array<SaleProduct>  $products
      */
     private function __construct(
         private array $products,
@@ -41,7 +40,7 @@ class Sale extends Entity
         string $saleId,
         int $total,
         array $products,
-        string  $status
+        string $status
     ) {
         return new Sale(
             saleId: new Uuid($saleId),
@@ -81,6 +80,7 @@ class Sale extends Entity
         if (count($this->products) === 0) {
             $this->products[] = $product;
             $this->updateSaleTotal();
+
             return;
         }
 
@@ -89,17 +89,18 @@ class Sale extends Entity
             if ($saleProduct->productId->equals($product->productId)) {
                 $saleProduct->incrementAmount($product->getAmount());
                 $this->updateSaleTotal();
+
                 return;
             }
         }
 
         $this->products[] = $product;
         $this->updateSaleTotal();
-        return;
+
     }
 
     /**
-     * @param array<SaleProduct> $products
+     * @param  array<SaleProduct>  $products
      */
     public function syncProducts(array $products): void
     {

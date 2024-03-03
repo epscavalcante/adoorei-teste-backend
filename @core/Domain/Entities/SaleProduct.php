@@ -32,12 +32,12 @@ class SaleProduct
 
     public function getAmount(): int
     {
-       return  $this->amount;
+        return $this->amount;
     }
 
     public function getPrice(): int
     {
-       return  $this->price->getValue();
+        return $this->price->getValue();
     }
 
     public function incrementAmount(int $amount)

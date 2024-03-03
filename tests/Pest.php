@@ -17,7 +17,6 @@ uses(
     // Illuminate\Foundation\Testing\RefreshDatabase::class,
 )->in('Unit', 'Integration', 'Feature');
 
-
 uses(
     Illuminate\Foundation\Testing\DatabaseMigrations::class
 )->in('Integration', 'Feature');
