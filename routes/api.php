@@ -29,4 +29,5 @@ Route::controller(SaleController::class)
         Route::get('/', 'list')->name('sales.list');
         Route::post('/', 'store')->name('sales.store');
         Route::get('{id}', 'show')->name('sales.show');
+        Route::patch('{id}/cancel', 'cancel')->name('sales.cancel');
     });

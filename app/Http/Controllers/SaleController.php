@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Resources\SaleResource;
+use Core\Application\Usecases\Sale\CancelSaleUsecase;
+use Core\Application\Usecases\Sale\CancelSaleUsecaseInput;
 use Core\Application\Usecases\Sale\CreateSaleUsecase;
 use Core\Application\Usecases\Sale\CreateSaleUsecaseInput;
 use Core\Application\Usecases\Sale\FindSaleUsecase;
@@ -38,5 +40,13 @@ class SaleController extends Controller
         $output = $usecase->execute($input);
 
         return (new SaleResource($output))->response();
+    }
+
+    public function cancel(CancelSaleUsecase $usecase, $id)
+    {
+        $input = new CancelSaleUsecaseInput($id);
+        $usecase->execute($input);
+
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }
