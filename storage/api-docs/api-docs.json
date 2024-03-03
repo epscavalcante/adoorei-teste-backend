@@ -1,0 +1,374 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Adoorei test for backend developer",
+        "contact": {
+            "email": "eduardo.ps.cavalcante@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "/products"
+                ],
+                "summary": "Get list of products",
+                "operationId": "1d83efbd6c8b6354f3714a56a4528310",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "total": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ProductResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sales": {
+            "get": {
+                "tags": [
+                    "/sales"
+                ],
+                "summary": "Get list of sales",
+                "operationId": "38dcb8dd434436558605c507cc2f5132",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "total": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/SaleResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "/sales"
+                ],
+                "summary": "Create a sale",
+                "operationId": "createUsersWithListInput",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/StoreSaleRequest"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SaleResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "422": {
+                        "description": "Entity unprocessable"
+                    }
+                }
+            }
+        },
+        "/api/sales/{id}": {
+            "get": {
+                "tags": [
+                    "/sales"
+                ],
+                "summary": "Get an specific sale",
+                "operationId": "b352670063e2f09edbfb74f39aef9b56",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "sale ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "uuid": {
+                                "summary": "An UUID value.",
+                                "value": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SaleResource"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/sales/{id}/cancel": {
+            "patch": {
+                "tags": [
+                    "/sales"
+                ],
+                "summary": "Cancel a sale",
+                "operationId": "1fe1ab1fa80a446b1ce492b8f35ff0d5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "sale ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "uuid": {
+                                "summary": "Sale ID",
+                                "value": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/sales/{id}/products": {
+            "put": {
+                "tags": [
+                    "/sales"
+                ],
+                "summary": "Update product of sale",
+                "operationId": "6664ae8f9e7359bf7f7bdb15bfcbd463",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "sale ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "uuid": {
+                                "summary": "An Uuid valid",
+                                "value": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/UpdateSaleRequest"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SaleResource"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "422": {
+                        "description": "Entity unprocessable"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProductResource": {
+                "title": "Product resource",
+                "description": "Product resource",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Produto de teste"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Descrição do produto de teste"
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": "1200"
+                    }
+                },
+                "type": "object"
+            },
+            "SaleProductResource": {
+                "title": "Sale Product resource",
+                "description": "Sale product resource",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Produto de teste"
+                    },
+                    "amount": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": "1000"
+                    }
+                },
+                "type": "object"
+            },
+            "SaleResource": {
+                "title": "Sale resource",
+                "description": "Sale resource",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "example": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                    },
+                    "total": {
+                        "type": "integer",
+                        "example": "1000"
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "opened"
+                    },
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SaleProductResource"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "requestBodies": {
+            "StoreSaleRequest": {
+                "description": "Body to create a sale",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "products": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "productId": {
+                                                "type": "string",
+                                                "example": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                                            },
+                                            "price": {
+                                                "type": "integer",
+                                                "example": "1000"
+                                            },
+                                            "amount": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "UpdateSaleRequest": {
+                "description": "Body to update a sale",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "products": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "productId": {
+                                                "type": "string",
+                                                "example": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                                            },
+                                            "price": {
+                                                "type": "integer",
+                                                "example": "1000"
+                                            },
+                                            "amount": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

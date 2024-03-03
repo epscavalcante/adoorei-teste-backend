@@ -4,6 +4,27 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\RequestBody(
+ *     request="StoreSaleRequest",
+ *     description="Body to create a sale",
+ *     required=true,
+ *     @OA\MediaType(
+ *         mediaType="application/json",
+ *         @OA\Schema(
+ *             @OA\Property(
+ *                 property="products",
+ *                 type="array",
+ *                 @OA\Items(
+ *                     @OA\Property(property="productId",type="string", example="0006faf6-7a61-426c-9034-579f2cfcfa83"),
+ *                     @OA\Property(property="price", type="int", example="1000"),
+ *                     @OA\Property(property="amount", type="int", example="1"),
+ *                 )
+ *             ),
+ *         )
+ *     )
+ * ),
+ */
 class StoreSaleRequest extends FormRequest
 {
     /**
