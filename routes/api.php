@@ -30,4 +30,5 @@ Route::controller(SaleController::class)
         Route::post('/', 'store')->name('sales.store');
         Route::get('{id}', 'show')->name('sales.show');
         Route::patch('{id}/cancel', 'cancel')->name('sales.cancel');
+        Route::put('{id}/products', 'update')->name('sales.update_products');
     });
