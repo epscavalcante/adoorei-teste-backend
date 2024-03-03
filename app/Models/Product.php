@@ -8,10 +8,10 @@ class Product extends Model
         'id',
         'name',
         'description',
-        'price'
+        'price',
     ];
 
     protected $casts = [
-        'price' => 'int'
+        'price' => 'int',
     ];
 }

@@ -1,10 +1,10 @@
 <?php
 
-use Core\Domain\Entities\SaleProduct;
 use Core\Domain\Entities\Sale;
+use Core\Domain\Entities\SaleProduct;
 use Core\Domain\Exceptions\SaleNotFoundException;
-use Core\Infra\Repositories\SaleMemoryRepository;
 use Core\Domain\ValueObjects\Uuid;
+use Core\Infra\Repositories\SaleMemoryRepository;
 
 describe('SaleMemoryRepositoryUnitTest', function () {
 
@@ -38,8 +38,8 @@ describe('SaleMemoryRepositoryUnitTest', function () {
                     Sale::create(),
                     Sale::create(),
                 ],
-                4
-            ]
+                4,
+            ],
         ]);
     });
 

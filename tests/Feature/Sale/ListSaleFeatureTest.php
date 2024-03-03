@@ -29,9 +29,9 @@ describe('ProducApiFeatureTest', function () {
                                     'id',
                                     'name',
                                     'price',
-                                    'amount'
-                                ]
-                            ]
+                                    'amount',
+                                ],
+                            ],
                         ],
                     ],
                 ]);

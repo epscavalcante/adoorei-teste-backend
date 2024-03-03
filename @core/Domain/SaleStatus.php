@@ -13,6 +13,7 @@ abstract class SaleStatus
     ) {
     }
 
-    abstract function open();
-    abstract function cancel();
+    abstract public function open();
+
+    abstract public function cancel();
 }

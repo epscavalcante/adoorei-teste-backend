@@ -35,7 +35,8 @@ class Uuid extends ValueObject
 
     public function validate()
     {
-        if (!RamseyUuid::isValid($this->value))
+        if (! RamseyUuid::isValid($this->value)) {
             throw new UuidInvalidException($this->value);
+        }
     }
 }

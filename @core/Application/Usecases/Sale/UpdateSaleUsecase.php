@@ -4,10 +4,10 @@ namespace Core\Application\Usecases\Sale;
 
 use Core\Application\Validations\IProductIdsExistsValidation;
 use Core\Domain\Entities\SaleProduct;
-use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
-use Core\Domain\Repositories\ISaleRepository;
 use Core\Domain\Exceptions\EntityValidationException;
+use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
 use Core\Domain\Repositories\IProductRepository;
+use Core\Domain\Repositories\ISaleRepository;
 use Core\Domain\ValueObjects\Uuid;
 
 class UpdateSaleUsecase
@@ -23,17 +23,19 @@ class UpdateSaleUsecase
     {
         $sale = $this->saleRepository->find(new Uuid($input->saleId));
 
-        if ($sale->isCancelled())
+        if ($sale->isCancelled()) {
             throw new SaleAlreadBeCancelledException($sale->getId());
+        }
 
         $productIds = array_map(fn ($product) => $product['productId'], $input->products);
         $result = $this->productIdsExistsValidation->validate($productIds);
 
-        if (count($result['notExists']))
+        if (count($result['notExists'])) {
             throw new EntityValidationException(
                 error: array_map(fn ($error) => $error->getMessage(), $result['notExists']),
                 field: 'productId'
             );
+        }
 
         $saleProducts = array_map(fn ($product) => SaleProduct::create(
             productId: $product['productId'],

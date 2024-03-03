@@ -3,7 +3,6 @@
 namespace Core\Domain\Exceptions;
 
 use Core\Domain\Entities\Sale;
-use Core\Domain\Exceptions\EntityNotFoundException;
 use Core\Domain\ValueObjects\Uuid;
 
 class SaleNotFoundException extends EntityNotFoundException

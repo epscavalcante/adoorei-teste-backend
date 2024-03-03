@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Sale extends Model
@@ -10,7 +9,7 @@ class Sale extends Model
     protected $fillable = [
         'id',
         'total',
-        'status'
+        'status',
     ];
 
     protected $casts = [

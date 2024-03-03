@@ -1,14 +1,14 @@
 <?php
 
-use Core\Domain\Entities\Sale;
-use Core\Domain\Entities\Product;
-use Core\Domain\Entities\SaleProduct;
 use Core\Application\Usecases\Sale\ListSaleUsecase;
 use Core\Application\Usecases\Sale\ListSaleUsecaseOutput;
+use Core\Application\Usecases\Sale\SaleProductUsecaseOutput;
 use Core\Application\Usecases\Sale\SaleUsecaseOutput;
+use Core\Domain\Entities\Product;
+use Core\Domain\Entities\Sale;
+use Core\Domain\Entities\SaleProduct;
 use Core\Infra\Repositories\ProductMemoryRepository;
 use Core\Infra\Repositories\SaleMemoryRepository;
-use Core\Application\Usecases\Sale\SaleProductUsecaseOutput;
 
 test('Deve retornar uma lista de vendas vazia', function () {
     $saleRepository = new SaleMemoryRepository();

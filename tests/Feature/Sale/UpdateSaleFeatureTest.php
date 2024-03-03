@@ -18,9 +18,9 @@ describe('PUT /sales/id/products', function () {
                     [
                         'productId' => Uuid::create()->getValue(),
                         'price' => 21,
-                        'amount' => 1312
-                    ]
-                ]
+                        'amount' => 1312,
+                    ],
+                ],
             ]
         )
             ->assertBadRequest();
@@ -34,9 +34,9 @@ describe('PUT /sales/id/products', function () {
                     [
                         'productId' => Uuid::create()->getValue(),
                         'price' => 21,
-                        'amount' => 1312
-                    ]
-                ]
+                        'amount' => 1312,
+                    ],
+                ],
             ]
         )
             ->assertNotFound();
@@ -49,9 +49,9 @@ describe('PUT /sales/id/products', function () {
                 [
                     'productId' => Uuid::create()->getValue(),
                     'price' => 21,
-                    'amount' => 1312
-                ]
-            ]
+                    'amount' => 1312,
+                ],
+            ],
         ];
 
         $this->putJson(route('sales.update_products', $sale->id), $body)
@@ -65,9 +65,9 @@ describe('PUT /sales/id/products', function () {
                 [
                     'productId' => Uuid::create()->getValue(),
                     'price' => 21,
-                    'amount' => 1312
-                ]
-            ]
+                    'amount' => 1312,
+                ],
+            ],
         ];
 
         $this->putJson(
@@ -76,7 +76,7 @@ describe('PUT /sales/id/products', function () {
         )
             ->assertBadRequest()
             ->assertJson([
-                'message' => "The sale ({$sale->id}) already be cancelled."
+                'message' => "The sale ({$sale->id}) already be cancelled.",
             ]);
     });
 
@@ -88,9 +88,9 @@ describe('PUT /sales/id/products', function () {
                 [
                     'productId' => $product->id,
                     'price' => $product->price,
-                    'amount' => 10
-                ]
-            ]
+                    'amount' => 10,
+                ],
+            ],
         ];
 
         $this->putJson(route('sales.update_products', $sale->id), $body)
@@ -105,9 +105,9 @@ describe('PUT /sales/id/products', function () {
                         'id',
                         'name',
                         'price',
-                        'amount'
-                    ]
-                ]
+                        'amount',
+                    ],
+                ],
             ])
             ->assertJson([
                 'id' => $sale->id,
@@ -118,9 +118,9 @@ describe('PUT /sales/id/products', function () {
                         'id' => $product->id,
                         'name' => 'test',
                         'price' => 100,
-                        'amount' => 10
-                    ]
-                ]
+                        'amount' => 10,
+                    ],
+                ],
             ]);
     });
 });

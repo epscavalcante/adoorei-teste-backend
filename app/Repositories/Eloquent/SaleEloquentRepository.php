@@ -56,7 +56,9 @@ class SaleEloquentRepository implements ISaleRepository
     {
         $saleFound = $this->_find($saleId);
 
-        if (!$saleFound) throw new SaleNotFoundException($saleId);
+        if (! $saleFound) {
+            throw new SaleNotFoundException($saleId);
+        }
 
         return $this->mapModelToEntity($saleFound);
     }
@@ -65,7 +67,9 @@ class SaleEloquentRepository implements ISaleRepository
     {
         $saleModel = $this->_find($sale->getId());
 
-        if (!$saleModel) throw new SaleNotFoundException($sale->getId());
+        if (! $saleModel) {
+            throw new SaleNotFoundException($sale->getId());
+        }
 
         DB::beginTransaction();
 
@@ -110,7 +114,7 @@ class SaleEloquentRepository implements ISaleRepository
     }
 
     /**
-     * @param array<SaleProduct> $products
+     * @param  array<SaleProduct>  $products
      */
     private function syncProducts(SaleModel $model, array $products)
     {
@@ -129,4 +133,4 @@ class SaleEloquentRepository implements ISaleRepository
 
         $model->productIds()->createMany($productsToSync);
     }
-};
+}

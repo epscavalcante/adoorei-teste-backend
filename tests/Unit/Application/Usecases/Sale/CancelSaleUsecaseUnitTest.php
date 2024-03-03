@@ -2,14 +2,14 @@
 
 use Core\Application\Usecases\Sale\CancelSaleUsecase;
 use Core\Application\Usecases\Sale\CancelSaleUsecaseInput;
+use Core\Application\Usecases\Sale\SaleUsecaseOutput;
 use Core\Domain\Entities\Sale;
 use Core\Domain\Exceptions\SaleAlreadBeCancelledException;
 use Core\Domain\Exceptions\SaleNotFoundException;
 use Core\Domain\SaleStatusEnum;
-use Core\Infra\Repositories\SaleMemoryRepository;
 use Core\Domain\ValueObjects\Uuid;
 use Core\Infra\Repositories\ProductMemoryRepository;
-use Core\Application\Usecases\Sale\SaleUsecaseOutput;
+use Core\Infra\Repositories\SaleMemoryRepository;
 
 describe('CancelSaleUsecaseUnitTest', function () {
     test('Should throws SaleNotFoundException', function () {

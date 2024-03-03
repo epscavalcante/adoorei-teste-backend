@@ -9,12 +9,12 @@ class SaleProduct extends Model
         'product_id',
         'price',
         'amount',
-        'total'
+        'total',
     ];
 
     protected $casts = [
         'price' => 'int',
         'amount' => 'int',
-        'total' => 'int'
+        'total' => 'int',
     ];
 }

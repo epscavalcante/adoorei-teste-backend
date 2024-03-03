@@ -8,7 +8,6 @@ use Core\Domain\ValueObjects\Uuid;
 
 class ProductIdsExistsValidation implements IProductIdsExistsValidation
 {
-
     public function __construct(
         private readonly IProductRepository $productRepository
     ) {
@@ -21,7 +20,7 @@ class ProductIdsExistsValidation implements IProductIdsExistsValidation
 
         return [
             'exists' => $result['exists'],
-            'notExists' => count($result['notExists']) ?  array_map(fn ($id) => new ProductNotFoundException($id), $result['notExists']) : []
+            'notExists' => count($result['notExists']) ? array_map(fn ($id) => new ProductNotFoundException($id), $result['notExists']) : [],
         ];
     }
 }

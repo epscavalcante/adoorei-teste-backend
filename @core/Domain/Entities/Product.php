@@ -19,9 +19,10 @@ class Product extends Entity
         string $name,
         string $description,
         int $price,
-        string | null $productId = null
+        ?string $productId = null
     ) {
         $id = $productId ?? Uuid::create()->getValue();
+
         return new Product(
             $name,
             $description,

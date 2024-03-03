@@ -1,19 +1,19 @@
 <?php
 
-use App\Models\Sale as SaleModel;
 use App\Models\Product as ProductModel;
-use Core\Domain\Entities\Sale;
-use Core\Domain\Entities\Product;
-use Core\Domain\Entities\SaleProduct;
+use App\Models\Sale as SaleModel;
 use App\Repositories\Eloquent\ProductEloquentRepository;
 use App\Repositories\Eloquent\SaleEloquentRepository;
 use Core\Application\Usecases\Sale\FindSaleUsecase;
 use Core\Application\Usecases\Sale\FindSaleUsecaseInput;
+use Core\Application\Usecases\Sale\SaleProductUsecaseOutput;
+use Core\Application\Usecases\Sale\SaleUsecaseOutput;
+use Core\Domain\Entities\Product;
+use Core\Domain\Entities\Sale;
+use Core\Domain\Entities\SaleProduct;
 use Core\Domain\Exceptions\SaleNotFoundException;
 use Core\Domain\SaleStatusEnum;
 use Core\Domain\ValueObjects\Uuid;
-use Core\Application\Usecases\Sale\SaleProductUsecaseOutput;
-use Core\Application\Usecases\Sale\SaleUsecaseOutput;
 
 describe('FindSaleUsecaseIntegrationTest', function () {
     test('Should throws SaleNotFoundException', function () {
@@ -44,7 +44,7 @@ describe('FindSaleUsecaseIntegrationTest', function () {
 
         $usecase = new FindSaleUsecase(
             saleRepository: $saleRepository,
-            productRepository:$productRepository
+            productRepository: $productRepository
         );
         $input = new FindSaleUsecaseInput($sale->getId()->getValue());
         $output = $usecase->execute($input);
