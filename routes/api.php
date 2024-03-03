@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,15 @@ Route::controller(ProductController::class)
     ->prefix('products')
     ->group(function () {
         Route::get('/', 'list')->name('products.list');
+    });
+
+
+Route::controller(SaleController::class)
+    ->prefix('sales')
+    ->group(function () {
+        Route::get('/', 'list')->name('sales.list');
+        Route::post('/', 'store')->name('sales.store');
+        Route::get('{id}', 'show')->name('sales.show');
+        Route::patch('{id}/cancel', 'cancel')->name('sales.cancel');
+        Route::put('{id}/products', 'update')->name('sales.update_products');
     });
