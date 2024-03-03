@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Repositories\Eloquent\ProductEloquentRepository;
+use App\Repositories\Eloquent\SaleEloquentRepository;
 use Core\Domain\Repositories\IProductRepository;
+use Core\Domain\Repositories\ISaleRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             IProductRepository::class,
             ProductEloquentRepository::class
+        );
+
+        $this->app->singleton(
+            ISaleRepository::class,
+            SaleEloquentRepository::class
         );
     }
 
