@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Core\Domain\Exceptions\EntityNotFoundException;
 use Core\Domain\Exceptions\EntityValidationException;
+use Core\Domain\Exceptions\UuidInvalidException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Illuminate\Http\Response;
@@ -36,6 +38,18 @@ class Handler extends ExceptionHandler
                 'message' => $e->getMessage(),
                 'errors' => $e->getErrors()
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        if ($e instanceof EntityNotFoundException) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        if ($e instanceof UuidInvalidException) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], Response::HTTP_BAD_REQUEST);
         }
 
         return parent::render($request, $e);
