@@ -15,7 +15,12 @@ uses(
     Tests\TestCase::class,
     Tests\CreatesApplication::class,
     // Illuminate\Foundation\Testing\RefreshDatabase::class,
-)->in('Feature');
+)->in('Unit', 'Integration', 'Feature');
+
+
+uses(
+    Illuminate\Foundation\Testing\DatabaseMigrations::class
+)->in('Integration', 'Feature');
 
 /*
 |--------------------------------------------------------------------------
