@@ -28,4 +28,5 @@ Route::controller(SaleController::class)
     ->group(function () {
         Route::get('/', 'list')->name('sales.list');
         Route::post('/', 'store')->name('sales.store');
+        Route::get('{id}', 'show')->name('sales.show');
     });
