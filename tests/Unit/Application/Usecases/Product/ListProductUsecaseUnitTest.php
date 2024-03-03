@@ -1,9 +1,9 @@
 <?php
 
 use Core\Infra\Repositories\ProductMemoryRepository;
-use Core\Application\Usecases\ListProductUsecase;
-use Core\Application\Usecases\ListProductUsecaseOutput;
-use Core\Application\Usecases\ProductUsecaseOutput;
+use Core\Application\Usecases\Product\ListProductUsecase;
+use Core\Application\Usecases\Product\ListProductUsecaseOutput;
+use Core\Application\Usecases\Product\ProductUsecaseOutput;
 use Core\Domain\Entities\Product;
 
 describe('ListProductUsecaseUnitTest', function () {
