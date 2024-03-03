@@ -2,9 +2,10 @@
 
 namespace App\Exceptions;
 
+use Core\Domain\Exceptions\EntityValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-
+use Illuminate\Http\Response;
 class Handler extends ExceptionHandler
 {
     /**
@@ -26,5 +27,17 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof EntityValidationException) {
+            return response()->json([
+                'message' => $e->getMessage(),
+                'errors' => $e->getErrors()
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        return parent::render($request, $e);
     }
 }
