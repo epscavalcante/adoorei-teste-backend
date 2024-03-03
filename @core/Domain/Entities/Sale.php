@@ -7,7 +7,6 @@ use Core\Domain\SaleStatusEnum;
 use Core\Domain\SaleStatusFactory;
 use Core\Domain\Entities\Entity;
 use Core\Domain\ValueObjects\Uuid;
-use Exception;
 
 class Sale extends Entity
 {
