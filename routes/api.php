@@ -27,4 +27,5 @@ Route::controller(SaleController::class)
     ->prefix('sales')
     ->group(function () {
         Route::get('/', 'list')->name('sales.list');
+        Route::post('/', 'store')->name('sales.store');
     });
