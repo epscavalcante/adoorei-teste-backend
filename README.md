@@ -2,8 +2,7 @@
 
 # Setup application
 
-Entre no diretório .docker e siga as a seguir.
-
+Entre no diretório .docker e siga as instruções a seguir.
 
 #### Levantar os containes (laravel, nginx e mysql):
 ```docker compose up -d```
